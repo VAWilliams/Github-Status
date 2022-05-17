@@ -1,0 +1,64 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+    margin: 0;
+
+    .heading-separator {
+        color: #3f51b5;
+        font-size: 1.5em;
+        font-weight: 500;
+        vertical-align: bottom;
+    }
+
+    .github-link {
+        vertical-align: middle;
+        cursor: pointer;
+    }
+}
+
+.mat-list .mat-list-item strong {
+    display: inline-block;
+    width: 2.5em;
+}
+
+.chip-list-wrapper {
+    height: auto !important;
+    margin: 1em 0;
+}
+
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+    .mat-card {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: 4em 2em 1em 2em;
+        height: fit-content;
+        cursor: pointer;
+
+        .mat-card-title {
+            display: flex;
+            justify-content: space-between;
+            mat-icon {
+                vertical-align: middle;
+            }
+        }
+    
+        .mat-card-content.no-data {
+            margin: auto;
+        }
+        &:hover {
+            box-shadow:
+                0px 2px 3px -1px rgb(0 0 0 / 30%),
+                0px 1px 3px 0px rgb(0 0 0 / 24%),
+                0px 1px 5px 0px rgb(0 0 0 / 22%)
+            ;
+        }
+    }
+}
+

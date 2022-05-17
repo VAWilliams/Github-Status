@@ -1,0 +1,10 @@
+<nav class="navigation">
+    <mat-toolbar color="primary">
+        <span class="home-link" [routerLink]="['']">{{title}}</span>
+    </mat-toolbar>
+    <ng-container *ngIf="isLoading | async">
+        <mat-divider></mat-divider>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </ng-container>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,76 @@
+<section *ngIf="repository$ | async as repository; else loading">
+    <h3 class="heading">
+        <span>
+            {{repository.owner.login}} <span class="heading-separator">&#47;</span> {{repository.name}}
+        </span>
+        <a [href]="repository.svn_url" target="_blank" rel="noopener noreferrer" class="github-link">
+            <mat-icon>open_in_new</mat-icon>
+        </a>
+    </h3>
+    <mat-divider></mat-divider>
+    <div class="card-container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>About</mat-card-title>
+                <mat-card-subtitle *ngIf="repository.description">{{repository.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                    <mat-list-item *ngIf="repository.homepage">
+                        <mat-icon matListIcon>link</mat-icon>
+                        <span matLine>
+                            <a [href]="repository.homepage" target="_blank" rel="noopener noreferrer">
+                                {{repository.homepage}}
+                            </a>
+                        </span>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="repository.topics?.length" class="chip-list-wrapper">
+                        <mat-chip-list matLine aria-label="Topics">
+                            <mat-chip *ngFor="let topic of repository.topics">
+                                {{topic}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon matListIcon>star</mat-icon>
+                        <span matLine><strong>{{repository.subscribers_count}}</strong> stars</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon matListIcon>visibility</mat-icon>
+                        <span matLine><strong>{{repository.watchers_count}}</strong> watching</span>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-icon matListIcon>alt_route</mat-icon>
+                        <span matLine><strong>{{repository.forks | shortNumber : 1}}</strong> forks</span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card
+            routerLink="/search/issues"
+            [queryParams]="issueQueryParams(repository)">
+            <mat-card-header>
+                <mat-card-title>
+                    <span>Issues</span>
+                    <mat-icon>east</mat-icon>
+                </mat-card-title>
+                <mat-card-subtitle>Repository Health</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content [class.no-data]="!chart.data.length">
+                <google-chart *ngIf="chart.data.length; else noData"
+                    [type]="chart.type"
+                    [data]="chart.data"
+                    [options]="chart.options">
+                </google-chart>
+                <ng-template #noData>
+                    <span>No Issue History.</span>
+                </ng-template>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</section>
+
+<ng-template #loading>
+    <p>Getting repository details...</p>
+</ng-template>

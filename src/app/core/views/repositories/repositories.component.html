@@ -1,0 +1,39 @@
+<section *ngIf="result$ | async as result">
+    <mat-list>
+        <mat-list-item>
+            <h3 matLine>{{result.total_count | shortNumber : 2}} repository results</h3>
+        </mat-list-item>
+        <ng-container *ngFor="let repository of result.items">
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <mat-icon matListIcon>book</mat-icon>
+                <h4 matLine>
+                    <a routerLink="/repositories"
+                        [style.textDecoration]="'none'"
+                        [queryParams]="{
+                            owner: repository.owner.login,
+                            repo: repository.name
+                        }">
+                        {{repository.full_name}}
+                    </a>
+                </h4>
+                <p matLine *ngIf="repository.description">{{repository.description}}</p>
+                <mat-chip-list matLine aria-label="Topics" *ngIf="repository.topics?.length">
+                    <mat-chip *ngFor="let topic of repository.topics">
+                        {{topic}}
+                    </mat-chip>
+                </mat-chip-list>
+                <p matLine> {{repository.updated_at | date}}</p>
+            </mat-list-item>
+    
+        </ng-container>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-paginator
+        [pageIndex]="page - 1"
+        [length]="result.total_count"
+        [pageSize]="result.items.length"
+        [hidePageSize]="true"
+        (page)="updatePage($event.pageIndex)">
+    </mat-paginator>
+</section>

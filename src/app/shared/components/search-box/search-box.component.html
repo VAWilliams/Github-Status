@@ -1,0 +1,14 @@
+<form>
+    <mat-form-field appearance="outline">
+        <!-- <mat-label>Repository</mat-label> -->
+        <input matInput #input
+            (keyup)="
+                $event.key === 'Enter' &&
+                search.emit(input.value)
+            ">
+        <mat-icon matSuffix
+            (click)="search.emit(input.value)">
+            search
+        </mat-icon>
+    </mat-form-field>
+</form>

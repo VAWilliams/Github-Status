@@ -1,0 +1,20 @@
+.navigation {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    .mat-toolbar {
+        height: 100px;
+    }
+}
+
+.home-link {
+    cursor: pointer;
+}
+
+:host::ng-deep a {
+    text-decoration: none !important;
+    color: inherit !important;
+}

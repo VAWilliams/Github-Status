@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0);
+
+:host::ng-deep {
+    .mat-list {
+        margin: 5em 0;
+        .mat-list-item {
+            height: fit-content !important;
+            padding: 1em 0;
+        }
+    }
+    .mat-line {
+        white-space: normal !important;
+    }
+    .mat-chip-list {
+        padding: .5em 0 !important;
+        .mat-chip {
+            margin: 5px;
+            zoom: .8;
+        }
+    }
+    .mat-paginator {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    @media screen and (min-width: 450px) {
+        .mat-list {
+            margin: 5em 15%;
+        }
+    }
+}
