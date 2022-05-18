@@ -1,12 +1,10 @@
 <form>
     <mat-form-field appearance="outline">
         <input matInput #input
-            (keyup)="
-                $event.key === 'Enter' &&
-                search.emit(input.value)
-            ">
+            [formControl]="control"
+            (keyup)="onKeyUp($event)">
         <mat-icon matSuffix
-            (click)="search.emit(input.value)">
+            (click)="onSearchClick()">
             search
         </mat-icon>
     </mat-form-field>

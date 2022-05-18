@@ -20,4 +20,13 @@ export class SearchBoxComponent implements OnInit {
     this.control = this.formBuilder.control('');
   }
 
+  onKeyUp(event: KeyboardEvent): void {
+    if (event.key !== 'Enter') return;
+    this.search.emit(this.control.value);
+  }
+
+  onSearchClick() {
+    this.search.emit(this.control.value);
+  }
+
 }
