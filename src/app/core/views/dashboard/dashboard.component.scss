@@ -1,0 +1,33 @@
+.hero-container {
+
+  --toolbar-height: 56px;
+
+  background:
+    linear-gradient(45deg, rgb(0 0 0 / 25%), rgb(50 50 50 / 50%)),
+    url(/assets/images/hero.jpg);
+  background-size: cover;
+  height: calc(100vh - var(--toolbar-height));
+  display: grid;
+  place-items: center;
+
+  .hero-content {
+    width: fit-content;
+    max-width: 430px;
+    margin: -5em 1em 0;
+
+    .hero-text {
+      padding: 0 .5em 0;
+      color: white;
+      text-align: center;
+      font-size: 40px;
+      line-height: 1em;
+      letter-spacing: .05em;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .hero-container {
+    --toolbar-height: 64px;
+  }
+}

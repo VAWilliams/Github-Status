@@ -6,15 +6,40 @@
     z-index: 1;
 
     .mat-toolbar {
-        height: 100px;
+        background-color: #ffffff;
+        color: #262626;
+        padding: 0 2em 0;
+    }
+
+    .mat-progress-bar {
+        position: absolute;
     }
 }
 
 .home-link {
     cursor: pointer;
+    font-size: x-large;
+    letter-spacing: .05em;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+@media screen and (min-width: 786px) {
+    .container {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 55%;
+    }
 }
 
 :host::ng-deep a {
     text-decoration: none !important;
-    color: inherit !important;
+    color: #3f51b5 !important;
 }

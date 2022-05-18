@@ -30,7 +30,7 @@
 
 .card-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     
     .mat-card {
@@ -62,3 +62,8 @@
     }
 }
 
+@media screen and (min-width: 1200px) {
+    .card-container {
+        justify-content: space-between;
+    }
+}
