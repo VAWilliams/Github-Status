@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { Octokit } from 'octokit';
 import { OctokitResponse } from '@octokit/types';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { request } from '@octokit/request';
 
 type Options = { [key: string]: string | number };
 
@@ -11,11 +11,9 @@ type Options = { [key: string]: string | number };
 @Injectable({
   providedIn: 'root'
 })
-export class OctokitService extends Octokit {
+export class OctokitService {
 
-  constructor(private loaderService: LoaderService) {
-    super();
-  }
+  constructor(private loaderService: LoaderService) {}
 
   get<data>(
     uri: string, options?: Options
@@ -25,7 +23,7 @@ export class OctokitService extends Octokit {
 
     const endpoint = `GET ${uri}`;
 
-    const asyncResponse: Promise<OctokitResponse<data, number>> = this.request(
+    const asyncResponse: Promise<OctokitResponse<data, number>> = request(
       endpoint, options
     );
 
