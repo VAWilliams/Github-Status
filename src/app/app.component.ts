@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
         filter(event => event instanceof NavigationEnd),
         map(event => {
           const navigationEnd = event as NavigationEnd;
-          return navigationEnd.url;
+          return navigationEnd.urlAfterRedirects;
         })
       );
   }

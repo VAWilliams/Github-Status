@@ -3,9 +3,10 @@
   --toolbar-height: 56px;
 
   background:
-    linear-gradient(45deg, rgb(0 0 0 / 25%), rgb(50 50 50 / 50%)),
+    linear-gradient(45deg, hsla(0, 0%, 0%, 0.25), hsl(231, 48%, 48%)),
     url(/assets/images/hero.jpg);
   background-size: cover;
+  background-blend-mode: difference;
   height: calc(100vh - var(--toolbar-height));
   display: grid;
   place-items: center;
@@ -19,6 +20,7 @@
       padding: 0 .5em 0;
       color: white;
       text-align: center;
+      text-shadow: 0 0 0.1em hsl(0deg 0% 0% / 25%);
       font-size: 40px;
       line-height: 1em;
       letter-spacing: .05em;
