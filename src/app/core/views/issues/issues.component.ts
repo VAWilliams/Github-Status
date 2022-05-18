@@ -39,7 +39,6 @@ export class IssuesComponent implements OnInit {
         this.query = query;
 
         this.state = query.match(/(state):(?<state>\w+)/).groups.state;
-        console.log('state', this.state);
       })
     );
   }
