@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Row } from 'angular-google-charts';
 import { Repository } from '../../models/repository.model';
 
 @Component({
   templateUrl: './repository.component.html',
-  styleUrls: ['./repository.component.scss']
+  styleUrls: ['./repository.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RepositoryComponent implements OnInit {
 

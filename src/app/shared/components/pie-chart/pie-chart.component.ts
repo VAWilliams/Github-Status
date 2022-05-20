@@ -1,27 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ChartType, Row } from 'angular-google-charts';
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss']
+  styleUrls: ['./pie-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent {
 
   @Input()
   data: Row[] = [];
 
   type: ChartType = ChartType.PieChart;
-  options: {
+  options = {
     width: 300,
     height: 300,
-    legend: { position: 'bottom', alignment: 'center' },
+    legend: {
+      position: 'bottom',
+      alignment: 'center'
+    },
     sliceVisibilityThreshold: 0
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  };
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -7,7 +7,8 @@ import { Repository } from '../../models/repository.model';
 
 @Component({
   templateUrl: './repositories.component.html',
-  styleUrls: ['./repositories.component.scss']
+  styleUrls: ['./repositories.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RepositoriesComponent implements OnInit {
 

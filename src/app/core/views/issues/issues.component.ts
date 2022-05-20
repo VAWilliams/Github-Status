@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -7,7 +7,8 @@ import { SearchResult } from '../../models/query.model';
 
 @Component({
   templateUrl: './issues.component.html',
-  styleUrls: ['./issues.component.scss']
+  styleUrls: ['./issues.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IssuesComponent implements OnInit {
 

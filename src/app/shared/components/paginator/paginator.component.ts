@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.scss']
+  styleUrls: ['./paginator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatorComponent implements OnInit {
 
