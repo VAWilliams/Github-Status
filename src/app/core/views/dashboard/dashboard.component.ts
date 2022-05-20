@@ -10,6 +10,7 @@ export class DashboardComponent {
   constructor(private router: Router) {}
 
   search(query: string) {
+
     this.router.navigate(['/search/repositories'], {
       queryParams: {
         q: query,
@@ -17,6 +18,7 @@ export class DashboardComponent {
         per_page: 30
       }
     });
+
   }
 
 }

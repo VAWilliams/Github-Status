@@ -5,13 +5,22 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { StateToggleComponent } from './components/state-toggle/state-toggle.component';
+
+
+const declarations = [
+  SearchBoxComponent, 
+  ShortNumberPipe,
+  PieChartComponent,
+  PaginatorComponent,
+  StateToggleComponent
+];
 
 
 @NgModule({
-  declarations: [
-    SearchBoxComponent, 
-    ShortNumberPipe
-  ],
+  declarations: [...declarations],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,8 +33,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     FormsModule,
     ReactiveFormsModule,
     GoogleChartsModule,
-    SearchBoxComponent,
-    ShortNumberPipe
+    ...declarations
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,7 @@
+<mat-paginator *ngIf="page$ | async as page"
+    [pageIndex]="page - 1"
+    [length]="length"
+    [pageSize]="pageSize"
+    [hidePageSize]="true"
+    (page)="update($event.pageIndex + 1)">
+</mat-paginator>

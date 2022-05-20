@@ -29,11 +29,8 @@
         </ng-container>
     </mat-list>
     <mat-divider></mat-divider>
-    <mat-paginator
-        [pageIndex]="page - 1"
+    <app-paginator
         [length]="result.total_count"
-        [pageSize]="result.items.length"
-        [hidePageSize]="true"
-        (page)="updatePage($event.pageIndex)">
-    </mat-paginator>
+        [pageSize]="result.items?.length ?? 0"
+    ></app-paginator>
 </section>

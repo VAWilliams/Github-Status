@@ -1,0 +1,8 @@
+<google-chart *ngIf="data.length; else noData"
+    [type]="type"
+    [data]="data"
+    [options]="options">
+</google-chart>
+<ng-template #noData>
+    <span>No Issue History.</span>
+</ng-template>

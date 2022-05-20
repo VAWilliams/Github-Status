@@ -2,36 +2,24 @@
     <mat-list>
         <mat-list-item>
             <h3 matLine>{{result.total_count | shortNumber : 2}} issues results</h3>
-            <mat-button-toggle-group name="state" aria-label="State" (change)="filterState($event.value)" [value]="state">
-                <mat-button-toggle value="open">
-                    <mat-icon matListIcon>
-                        adjust
-                    </mat-icon> Open
-                </mat-button-toggle>
-                <mat-button-toggle value="closed">
-                    <mat-icon matListIcon class="material-symbols-outlined">
-                        check_circle
-                    </mat-icon> Closed
-                </mat-button-toggle>
-              </mat-button-toggle-group>
+            <app-state-toggle #toggle></app-state-toggle>
         </mat-list-item>
-        <ng-container *ngFor="let issue of result.items">
-            <mat-divider></mat-divider>
-            <mat-list-item>
-                <mat-icon matListIcon class="material-symbols-outlined">
-                    {{state === 'open' ? 'adjust' : 'check_circle'}}
-                </mat-icon>
-                <h4 matLine>{{issue.title}}</h4>
-                <p matLine> {{issue.updated_at | date}}</p>
-            </mat-list-item>
+        <ng-container *ngIf="toggle.state$ | async as state">
+            <ng-container *ngFor="let issue of result.items">
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <mat-icon matListIcon class="material-symbols-outlined">
+                        {{state === 'open' ? 'adjust' : 'check_circle'}}
+                    </mat-icon>
+                    <h4 matLine>{{issue.title}}</h4>
+                    <p matLine> {{issue.updated_at | date}}</p>
+                </mat-list-item>
+            </ng-container>
         </ng-container>
     </mat-list>
     <mat-divider></mat-divider>
-    <mat-paginator
-        [pageIndex]="page - 1"
+    <app-paginator
         [length]="result.total_count"
-        [pageSize]="result.items.length"
-        [hidePageSize]="true"
-        (page)="updatePage($event.pageIndex)">
-    </mat-paginator>
+        [pageSize]="result.items?.length ?? 0"
+    ></app-paginator>
 </section>
